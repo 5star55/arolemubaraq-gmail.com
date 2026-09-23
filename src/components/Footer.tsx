@@ -7,7 +7,7 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.fullName}
         </p>
-        <p>Built with Next.js · {profile.location}</p>
+        <p>{profile.location}</p>
       </div>
     </footer>
   );

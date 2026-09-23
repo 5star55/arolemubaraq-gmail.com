@@ -69,7 +69,7 @@ export const projects: Project[] = [
     tags: ["Web App", "Team"],
     summary:
       "A responsive academic resource website for A-Star Tutorials at Babcock University, used by 500+ students on campus.",
-    role: "Software Engineer",
+    role: "Frontend Lead",
     timeline: "Jan - Apr 2026",
     stack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     highlights: [
@@ -226,7 +226,7 @@ export const experience: Experience[] = [
   { org: "Babcock University Computing Club", role: "Frontend Lead", period: "Aug 2026 - Now" },
   { org: "MTN Nigeria", role: "Software Engineer Intern", period: "Jan 2026 - Jun 2026" },
   { org: "NOX Store", role: "Full-stack Engineer", period: "Mar 2026 - Apr 2026", image: "/projects/nox.png" },
-  { org: "Astar Tutorials", role: "Software Engineer", period: "Jan 2026 - Apr 2026", image: "/projects/astar.png" },
+  { org: "Astar Tutorials", role: "Frontend Lead", period: "Jan 2026 - Apr 2026", image: "/projects/astar.png" },
   { org: "Babcock University", role: "BSc Software Engineering - 4.68/5.0", period: "Final year" },
 ];
 
