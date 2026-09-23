@@ -11,7 +11,7 @@ export const profile = {
   location: "Nigeria",
   available: true,
   // Drop a transparent, cut-out portrait at public/me.png and set this to "/me.png".
-  photo: null as string | null,
+  photo: "/me.png" as string | null,
   resume: "https://drive.google.com/file/d/18EDhKXK8QNVY_0UOw5MuTSk8_m1F5Y52/view?usp=sharing",
 };
 
@@ -52,7 +52,7 @@ export const projects: Project[] = [
       "A full-stack e-commerce store with product pages, an admin dashboard and a custom cart and checkout flow, used by hundreds of customers.",
     role: "Full-stack Engineer",
     timeline: "Mar - Apr 2026",
-    stack: ["Next.js", "TypeScript", "Convex"],
+    stack: ["Next.js", "TypeScript", "Convex", "Tailwind CSS"],
     highlights: [
       "Built independently, end to end: storefront, product pages and admin dashboard.",
       "Designed a custom cart and checkout flow instead of relying on a hosted checkout.",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
       "A responsive academic resource website for A-Star Tutorials at Babcock University, used by 500+ students on campus.",
     role: "Software Engineer",
     timeline: "Jan - Apr 2026",
-    stack: ["Next.js", "React", "TypeScript"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     highlights: [
       "Used by 500+ students on campus to find course material.",
       "Implemented a structured UI system for organising course contents.",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
       "A full-stack invoicing and client management app for freelancers, with JWT authentication and ownership-based authorization.",
     role: "Full-stack Engineer",
     timeline: "Jul - Sep 2026",
-    stack: ["NestJS", "Next.js", "TypeScript", "Prisma", "PostgreSQL"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
     highlights: [
       "JWT authentication with ownership-based authorization guards, so users can never read each other's data.",
       "Migrated the database from SQLite to PostgreSQL.",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
       "An MVP platform where students upload and download course materials, designed and built solo from end to end.",
     role: "Solo Full-stack Engineer",
     timeline: "Apr - May 2026",
-    stack: ["Full-stack", "Authentication", "File uploads"],
+    stack: ["Next.js", "TypeScript", "Convex", "Tailwind CSS"],
     highlights: [
       "Designed and built the whole product solo, from UI to data.",
       "Authentication so students can manage their own uploads.",
@@ -145,7 +145,7 @@ export const projects: Project[] = [
       "A movie discovery app on the TMDB API, giving search access to 1.3M+ movies with bookmarks saved locally.",
     role: "Frontend Engineer",
     timeline: "Aug - Sep 2025",
-    stack: ["React", "JavaScript", "TMDB API", "Vercel"],
+    stack: ["React", "CSS", "TMDB API"],
     highlights: [
       "Search across a catalogue of 1.3M+ movies via the TMDB API.",
       "Save and bookmark favourites with Local Storage, with no backend or auth needed.",
@@ -164,7 +164,7 @@ export const projects: Project[] = [
       "A self-assessment platform that helps students reflect on stress and anxiety and points them to coping resources and support services.",
     role: "Designer & Developer",
     timeline: "Oct - Nov 2024",
-    stack: ["Web", "UX"],
+    stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
       "Guided self-assessment for stress and anxiety symptoms.",
       "Directs students to relevant coping resources or support services.",
@@ -182,7 +182,7 @@ export const projects: Project[] = [
       "A platform for students to report and recover lost items, built and launched by a team of five I led.",
     role: "Team Lead",
     timeline: "Feb - Mar 2024",
-    stack: ["Web", "Team of 5"],
+    stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
       "Led a team of 5 students from idea to launch.",
       "Students can report lost items and recover found ones.",
@@ -212,6 +212,11 @@ export const services: Service[] = [
     description:
       "REST APIs in NestJS with Prisma and PostgreSQL, secured with JWT and ownership guards.",
     image: "/projects/invoicr.png",
+  },
+  {
+    title: "Cloud DevOps",
+    description:
+      "Deploying and running apps on Azure, with CI/CD pipelines, containers and monitoring that keep releases smooth.",
   },
 ];
 

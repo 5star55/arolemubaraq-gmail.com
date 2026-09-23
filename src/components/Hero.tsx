@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react";
 import { PillButton, SocialPill } from "./ui";
 import { SplitText, ease } from "./Reveal";
 import { profile, socials } from "@/lib/data";
@@ -21,14 +21,7 @@ export default function Hero() {
         className="relative z-10 mx-auto -mt-[4vw] aspect-[4/5] w-[min(78vw,32rem)] lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[min(38vw,34rem)] lg:-translate-x-1/2"
       >
         {profile.photo ? (
-          <Image
-            src={profile.photo}
-            alt={profile.fullName}
-            fill
-            preload
-            sizes="(min-width: 1024px) 38vw, 78vw"
-            className="object-contain object-bottom grayscale"
-          />
+          <PortraitReveal src={profile.photo} alt={profile.fullName} />
         ) : (
           <PortraitPlaceholder />
         )}
@@ -62,6 +55,54 @@ export default function Hero() {
         </ul>
       </div>
     </section>
+  );
+}
+
+/** Width / height of public/me.png, so the colour mask lines up with the photo. */
+const PHOTO_ASPECT = 713 / 690;
+/** Colour stops at the chin (% of photo height) so the neck and shirt stay grey. */
+const FACE_END = 40;
+const FACE_FADE = 46;
+
+/**
+ * Grayscale portrait. On hover a hard vertical edge follows the cursor and
+ * everything on the face to the right of it shows its real colour.
+ */
+function PortraitReveal({ src, alt }: { src: string; alt: string }) {
+  const edge = useMotionValue(9999); // off to the right: fully grey until hovered
+  const x = useSpring(edge, { stiffness: 260, damping: 32 });
+  const wipe = useMotionTemplate`linear-gradient(to right, transparent ${x}px, #000 calc(${x}px + 1.5px))`;
+  const face = `linear-gradient(to bottom, #000 ${FACE_END}%, transparent ${FACE_FADE}%)`;
+  const mask = useMotionTemplate`${wipe}, ${face}`;
+  const sizes = "(min-width: 1024px) 38vw, 78vw";
+
+  return (
+    <div
+      className="absolute inset-x-0 bottom-0 cursor-pointer"
+      style={{ aspectRatio: PHOTO_ASPECT }}
+      onPointerEnter={(e) => {
+        // Start fully grey so the colour sweeps in from the right.
+        const r = e.currentTarget.getBoundingClientRect();
+        x.jump(r.width);
+        edge.set(e.clientX - r.left);
+      }}
+      onPointerMove={(e) => edge.set(e.clientX - e.currentTarget.getBoundingClientRect().left)}
+      onPointerLeave={(e) => edge.set(e.currentTarget.getBoundingClientRect().width)}
+    >
+      <Image src={src} alt={alt} fill preload sizes={sizes} className="object-contain grayscale" />
+      <motion.div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          maskImage: mask,
+          WebkitMaskImage: mask,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      >
+        <Image src={src} alt="" fill sizes={sizes} className="object-contain" />
+      </motion.div>
+    </div>
   );
 }
 

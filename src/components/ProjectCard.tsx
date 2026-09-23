@@ -65,6 +65,14 @@ export default function ProjectCard({ project }: { project: Project }) {
             <Tag key={t}>{t}</Tag>
           ))}
         </div>
+        <ul className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted" aria-label="Tech stack">
+          {project.stack.map((s, i) => (
+            <li key={s} className="flex items-center gap-2">
+              {i > 0 && <span aria-hidden className="size-1 rounded-full bg-ink/25" />}
+              {s}
+            </li>
+          ))}
+        </ul>
       </div>
     </Link>
   );
