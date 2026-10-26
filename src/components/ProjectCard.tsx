@@ -45,9 +45,16 @@ export default function ProjectCard({ project }: { project: Project }) {
             </span>
           </div>
         )}
-        <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold tracking-wide text-ink/70 uppercase backdrop-blur">
-          {project.kind}
-        </span>
+        <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+          <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold tracking-wide text-ink/70 uppercase backdrop-blur">
+            {project.kind}
+          </span>
+          {project.status && (
+            <span className="rounded-full bg-ink/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-white uppercase backdrop-blur">
+              {project.status}
+            </span>
+          )}
+        </div>
         <motion.span
           aria-hidden
           style={{ left: sx, top: sy }}
@@ -73,6 +80,12 @@ export default function ProjectCard({ project }: { project: Project }) {
             </li>
           ))}
         </ul>
+        {project.liveLabel && (
+          <p className="mt-4 flex items-center gap-1.5 text-sm font-medium text-ink">
+            {project.liveLabel}
+            <ArrowUpRight width={14} height={14} />
+          </p>
+        )}
       </div>
     </Link>
   );

@@ -55,12 +55,17 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
               <Reveal delay={0.6} y={10}>
                 <span className="text-xl text-muted sm:text-2xl">/{project.kind}</span>
               </Reveal>
+              {project.status && (
+                <Reveal delay={0.65} y={10}>
+                  <Tag className="bg-ink text-white ring-0">{project.status}</Tag>
+                </Reveal>
+              )}
             </div>
             <Reveal delay={0.7}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{project.summary}</p>
             </Reveal>
             <Reveal delay={0.8} className="mt-8 flex flex-wrap gap-3">
-              {project.live && <PillButton href={project.live}>Live Preview</PillButton>}
+              {project.live && <PillButton href={project.live}>{project.liveLabel ?? "Live Preview"}</PillButton>}
               <PillButton href={`mailto:${profile.email}`} variant="light" arrow={false}>
                 Contact Me
               </PillButton>

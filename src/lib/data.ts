@@ -37,11 +37,34 @@ export type Project = {
   timeline: string;
   stack: string[];
   highlights: string[];
+  status?: string;
   live?: string;
+  liveLabel?: string;
   image?: string;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "schoolr",
+    name: "Schoolr",
+    title: "Schoolr - School management platform for Nigerian schools",
+    kind: "Real Project",
+    tags: ["SaaS", "Multi-tenant"],
+    summary:
+      "A multi-tenant, subscription-based school management platform for Nigerian primary and secondary schools. It covers student records, admissions, staff directory, attendance, and results/report cards, plus a public school website for each school that updates automatically from the same data, on per-school subdomains.",
+    role: "Full-stack Engineer",
+    timeline: "Oct 2026 - Present",
+    stack: ["Next.js", "TypeScript", "NestJS", "PostgreSQL", "Docker", "Nginx", "Azure"],
+    highlights: [
+      "NestJS backend and Next.js frontend in separate repos, each running as its own Docker container.",
+      "Nginx reverse proxy, with PostgreSQL self-hosted as a container.",
+      "Deployed on an Azure VM with Docker Compose, on the custom domain schoolr.tech.",
+    ],
+    status: "MVP ready",
+    // The Azure VM is sometimes switched off to manage costs.
+    live: "https://schoolr.tech",
+    liveLabel: "Live demo on request",
+  },
   {
     slug: "nox-store",
     name: "NOX Store",
@@ -228,6 +251,17 @@ export const experience: Experience[] = [
   { org: "NOX Store", role: "Full-stack Engineer", period: "Mar 2026 - Apr 2026", image: "/projects/nox.png" },
   { org: "Astar Tutorials", role: "Frontend Lead", period: "Jan 2026 - Apr 2026", image: "/projects/astar.png" },
   { org: "Babcock University", role: "BSc Software Engineering - 4.68/5.0", period: "Final year" },
+];
+
+export type Certification = { name: string; issuer: string; date: string; href: string };
+
+export const certifications: Certification[] = [
+  {
+    name: "Azure Fundamentals (AZ-900)",
+    issuer: "Microsoft",
+    date: "Oct 2026",
+    href: "https://learn.microsoft.com/en-us/users/mubaraqoluwatomisinarole-8084/credentials/1d93e266abd8ff51",
+  },
 ];
 
 export const skills = [
