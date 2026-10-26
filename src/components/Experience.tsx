@@ -78,40 +78,53 @@ export default function Experience() {
           <h3 className="px-2 text-sm font-medium tracking-[0.2em] text-white/50 uppercase sm:px-4">Certifications</h3>
         </Reveal>
         <ul className="mt-4">
-          {certifications.map((cert, i) => (
-            <motion.li
-              key={cert.href}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.7, ease, delay: i * 0.08 }}
-              className="border-b border-white/10"
-            >
-              <a
-                href={cert.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col gap-2 px-2 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-4 sm:py-8"
-              >
+          {certifications.map((cert, i) => {
+            const body = (
+              <>
                 <div>
                   <p className="flex items-center gap-2 text-lg font-medium sm:text-2xl">
                     {cert.name}
-                    <ArrowUpRight
-                      width={20}
-                      height={20}
-                      className="text-white/40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
-                    />
+                    {cert.href && (
+                      <ArrowUpRight
+                        width={20}
+                        height={20}
+                        className="shrink-0 text-white/40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+                      />
+                    )}
                   </p>
                   <p className="mt-2 text-base text-white/50 transition-colors duration-300 group-hover:text-white/80 sm:text-xl">
                     {cert.issuer}
                   </p>
                 </div>
-                <p className="text-sm text-white/50 transition-colors duration-300 group-hover:text-white sm:text-xl">
-                  {cert.date}
-                </p>
-              </a>
-            </motion.li>
-          ))}
+                {cert.date && (
+                  <p className="text-sm text-white/50 transition-colors duration-300 group-hover:text-white sm:text-xl">
+                    {cert.date}
+                  </p>
+                )}
+              </>
+            );
+            const rowClass =
+              "group flex flex-col gap-2 px-2 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-4 sm:py-8";
+
+            return (
+              <motion.li
+                key={cert.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.7, ease, delay: i * 0.08 }}
+                className="border-b border-white/10"
+              >
+                {cert.href ? (
+                  <a href={cert.href} target="_blank" rel="noopener noreferrer" className={rowClass}>
+                    {body}
+                  </a>
+                ) : (
+                  <div className={rowClass}>{body}</div>
+                )}
+              </motion.li>
+            );
+          })}
         </ul>
       </div>
     </section>

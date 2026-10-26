@@ -253,14 +253,35 @@ export const experience: Experience[] = [
   { org: "Babcock University", role: "BSc Software Engineering - 4.68/5.0", period: "Final year" },
 ];
 
-export type Certification = { name: string; issuer: string; date: string; href: string };
+export type Certification = { name: string; issuer: string; date?: string; href?: string };
 
 export const certifications: Certification[] = [
   {
     name: "Azure Fundamentals (AZ-900)",
     issuer: "Microsoft",
     date: "Oct 2026",
-    href: "https://learn.microsoft.com/en-us/users/mubaraqoluwatomisinarole-8084/credentials/1d93e266abd8ff51",
+    href: "https://learn.microsoft.com/api/credentials/share/en-us/MubaraqOluwatomisinArole-8084/1D93E266ABD8FF51?sharingId=937883BD6D70F4B0",
+  },
+  {
+    name: "Introduction to Databases for Back-End Development",
+    issuer: "Meta",
+    date: "Oct 2025",
+    href: "https://coursera.org/verify/4B7W66ZATSJ5",
+  },
+  {
+    name: "HTML and CSS in Depth",
+    issuer: "Meta",
+    date: "Sep 2025",
+    href: "https://www.coursera.org/account/accomplishments/verify/LRBKWCIJC7YS",
+  },
+  {
+    name: "Programming in Python",
+    issuer: "Meta",
+    href: "https://www.coursera.org/account/accomplishments/certificate/TTIO67Z9YY",
+  },
+  {
+    name: "React Specialization",
+    issuer: "Meta",
   },
 ];
 
