@@ -12,7 +12,7 @@ export const profile = {
   available: true,
   // Drop a transparent, cut-out portrait at public/me.png and set this to "/me.png".
   photo: "/me.png" as string | null,
-  resume: "https://drive.google.com/file/d/18EDhKXK8QNVY_0UOw5MuTSk8_m1F5Y52/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1Qyne7wh6yk2BuYE6GuXQZZqdAmvEG2IA/view?usp=sharing",
 };
 
 export type Social = { label: string; href: string; icon: "github" | "linkedin" | "mail" | "file" };
